@@ -34,7 +34,7 @@ jobs:
       # Step 4: Build executable with PyInstaller
       - name: Build executable
         run: |
-          pyinstaller --onefile --windowed emulecollection_tools/emulecollection_tools.py
+          poetry run pyinstaller --onefile --windowed emulecollection_tools/emulecollection_tools.py
         env:
           PYTHONUTF8: "1"
 
