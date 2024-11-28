@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "emulecollection-tools"
+version = "0.1.0"
+description = "A desktop app for working with emulecollections."
+authors = ["Gordon Greene <greeng3@obscure-reference.com>"]
+license = "MIT"
+readme = "README.md"
+package-mode = false
+
+[tool.poetry.dependencies]
+python = ">=3.12,<3.14"
+PyQt5 = "*"
+
+[tool.poetry.group.dev.dependencies]
+pyinstaller = "^6.11.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
