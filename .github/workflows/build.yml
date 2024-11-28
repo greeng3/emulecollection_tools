@@ -1,0 +1,44 @@
+name: Build Executables
+
+on:
+  push:
+    branches:
+      - dev
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+
+    steps:
+      # Step 1: Checkout the repository
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Step 2: Set up Python environment
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+
+      # Step 3: Install dependencies
+      - name: Install dependencies
+        run: |
+          poetry install
+
+      # Step 4: Build executable with PyInstaller
+      - name: Build executable
+        run: |
+          pyinstaller --onefile --windowed emulecollection_tools/emulecollection_tools.py
+        env:
+          PYTHONUTF8: "1"
+
+      # Step 5: Upload artifacts
+      - name: Upload executable
+        uses: actions/upload-artifact@v3
+        with:
+          name: executable-${{ matrix.os }}
+          path: dist/emulecollection_tools*
