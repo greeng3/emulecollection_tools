@@ -1,5 +1,5 @@
-from PyQt5.QtWidgets import QApplication, QLabel, QVBoxLayout, QPushButton, QWidget
-
+from PyQt6.QtWidgets import QApplication, QLabel, QVBoxLayout, QPushButton, QWidget
+from PyQt6.QtCore import Qt
 
 def main() -> None:
     app = QApplication([])
@@ -18,8 +18,7 @@ def main() -> None:
 
     window.setLayout(layout)
     window.show()
-    app.exec_()
-
+    app.exec()
 
 if __name__ == "__main__":
     main()
